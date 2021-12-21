@@ -5,10 +5,12 @@
       <span class="header-search iconfont">&#xe6e1;</span>
       <div>输入城市游玩主题</div>
     </div>
-    <div class="header-right">
-      {{ this.city }}
-      <div class="header-city iconfont">&#xe877;</div>
-    </div>
+    <router-link :to="{ path: 'city' }">
+      <div class="header-right">
+        {{ this.city }}
+        <div class="header-city iconfont">&#xe877;</div>
+      </div>
+    </router-link>
   </div>
 </template>
 
@@ -60,6 +62,7 @@ export default {
     width: 1.24rem
     float: right
     text-align: center
+    color: #fff
     .header-city {
       display: inline-block
     }
