@@ -20,7 +20,6 @@ export default {
   props: {
     recommendList: [],
   },
-  data() {},
 }
 </script>
 

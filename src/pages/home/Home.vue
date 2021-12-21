@@ -20,7 +20,7 @@ import axios from 'axios'
 export default {
   name: 'Home',
   components: { HomeHeader, HomeSwiper, HomeIcons, HomeRecommend, HomeWeekend },
-  data: function () {
+  data() {
     return {
       city: '',
       swiperList: [],
