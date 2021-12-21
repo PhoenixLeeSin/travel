@@ -1,19 +1,8 @@
 <template>
   <div class="wrapper">
     <swiper :options="swiperOptions">
-      <swiper-slide>
-        <img
-          class="swiper-image"
-          src="//img1.qunarzz.com/sight/p0/1603/c8/c8795fe9072bdfa990.img.jpg_600x330_e1fe7e0e.jpg"
-          alt=""
-        />
-      </swiper-slide>
-      <swiper-slide>
-        <img
-          class="swiper-image"
-          src="//img1.qunarzz.com/sight/p0/1707/a3/a3924161475dee37a3.img.jpg_600x330_67fe57ba.jpg"
-          alt=""
-        />
+      <swiper-slide v-for="item in dataArray" :key="item.id">
+        <img class="swiper-image" :src="item.imgUrl" />
       </swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
@@ -23,6 +12,9 @@
 <script>
 export default {
   name: 'HomeSwiper',
+  props: {
+    dataArray: [],
+  },
   data() {
     return {
       swiperOptions: {
@@ -49,7 +41,7 @@ export default {
   width: 100%
   height: 0
   overflow: hidden
-  padding-bottom: 52%
+  padding-bottom: 31.25%
 }
 .swiper-image {
   width: 100%

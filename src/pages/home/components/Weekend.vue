@@ -2,8 +2,8 @@
   <div>
     <div class="title">周末去哪儿</div>
     <ul>
-      <li class="item" v-for="item in recommendList" :key="item.id">
-        <img class="item-image" :src="item.imageUrl" />
+      <li class="item" v-for="item in weekendList" :key="item.id">
+        <img class="item-image" :src="item.imgUrl" />
         <div class="item-info">
           <p class="item-title">{{ item.title }}</p>
           <p class="item-desc">{{ item.desc }}</p>
@@ -16,33 +16,10 @@
 <script>
 export default {
   name: 'HomeWeekend',
-  data() {
-    return {
-      recommendList: [
-        {
-          id: '0001',
-          imageUrl:
-            'https://imgs.qunarzz.com/sight/source/1812/b4/e9d7f043c4fadf.jpg_r_640x214_713df0cf.jpg',
-          title: '大连成园温泉',
-          desc: '与可爱温顺的羊驼亲密接触',
-        },
-        {
-          id: '0002',
-          imageUrl:
-            'https://imgs.qunarzz.com/sight/source/1812/b4/e9d7f043c4fadf.jpg_r_640x214_713df0cf.jpg',
-          title: '大连成园温泉',
-          desc: '与可爱温顺的羊驼亲密接触',
-        },
-        {
-          id: '0003',
-          imageUrl:
-            'https://imgs.qunarzz.com/sight/source/1812/b4/e9d7f043c4fadf.jpg_r_640x214_713df0cf.jpg',
-          title: '大连成园温泉',
-          desc: '与可爱温顺的羊驼亲密接触',
-        },
-      ],
-    }
+  props: {
+    weekendList: [],
   },
+  data() {},
 }
 </script>
 

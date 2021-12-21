@@ -6,7 +6,7 @@
       <div>输入城市游玩主题</div>
     </div>
     <div class="header-right">
-      城市
+      {{ this.city }}
       <div class="header-city iconfont">&#xe877;</div>
     </div>
   </div>
@@ -15,6 +15,9 @@
 <script>
 export default {
   name: 'HomeHeader',
+  props: {
+    city: String,
+  },
 }
 </script>
 
