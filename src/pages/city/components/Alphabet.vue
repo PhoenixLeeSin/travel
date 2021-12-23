@@ -1,17 +1,30 @@
 <template>
   <div class="wrapper">
     <ul class="list">
-      <li v-for="item in alphabetArray" :key="item">{{ item }}</li>
-      <li>B</li>
+      <li
+        v-for="item in alphabetArray"
+        :key="item"
+        @click="() => handleClick(item)"
+      >
+        {{ item }}
+      </li>
     </ul>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   name: 'CityAlphabet',
   props: {
     alphabetArray: [],
+  },
+  methods: {
+    ...mapActions(['changeAlphabet']),
+    handleClick(alphabet) {
+      this.changeAlphabet(alphabet)
+    },
   },
 }
 </script>

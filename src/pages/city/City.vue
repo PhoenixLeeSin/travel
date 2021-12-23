@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="wrapper">
     <CityHeader />
     <CitySearch />
     <CityList :cities="cities" :hotCities="hotCities" />
@@ -12,6 +12,8 @@ import CityHeader from './components/Header.vue'
 import CitySearch from './components/Search.vue'
 import CityList from './components/List.vue'
 import CityAlphabet from './components/Alphabet.vue'
+import { mapActions } from 'vuex'
+
 import axios from 'axios'
 export default {
   name: 'City',
@@ -36,6 +38,11 @@ export default {
         this.alphabetArray = Object.keys(res.cities)
       }
     },
+    ...mapActions(['initializeData']),
+  },
+  created() {
+    /// 初始化字母表信息
+    this.initializeData()
   },
   mounted() {
     this.getCityData()
