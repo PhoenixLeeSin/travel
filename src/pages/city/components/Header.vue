@@ -16,6 +16,9 @@ export default {
 <style lang="stylus" scoped>
 .wrapper {
   display: flex
+  // position: absolute
+  // top: 0
+  // width 100%
   line-height: 0.88rem;
   background: #00bcd4;
   color: #fff;

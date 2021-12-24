@@ -23,7 +23,9 @@ export default {
   methods: {
     ...mapActions(['changeAlphabet']),
     handleClick(alphabet) {
-      this.changeAlphabet(alphabet)
+      if (alphabet) {
+        this.changeAlphabet(alphabet)
+      }
     },
   },
 }

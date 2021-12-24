@@ -12,7 +12,10 @@ export default {
 
 <style lang="stylus" scoped>
 .wrapper {
+  // position: absolute
+  // top: 0.88rem
   height: 0.64rem
+  width: 100%
   background: #00bcd4
   text-align: center
   .wrapper-input {

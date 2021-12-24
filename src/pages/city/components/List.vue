@@ -1,27 +1,25 @@
 <template>
   <div class="wrapper" ref="wrapperscroll">
-    <div>
-      <div class="content">
+    <div class="content">
+      <div class="area">
+        <div class="title">热门城市</div>
+      </div>
+      <div class="hot-cities">
+        <div v-for="item in hotCities" :key="item.id" class="hot-city">
+          {{ item.name }}
+        </div>
+      </div>
+      <div v-for="item in Object.keys(cities)" :key="item" :ref="item">
         <div class="area">
-          <div class="title">热门城市</div>
+          <div class="title">{{ item }}</div>
         </div>
-        <div class="hot-cities">
-          <div v-for="item in hotCities" :key="item.id" class="hot-city">
-            {{ item.name }}
-          </div>
-        </div>
-        <div v-for="item in Object.keys(cities)" :key="item" :ref="item">
-          <div class="area">
-            <div class="title">{{ item }}</div>
-          </div>
-          <div class="city-list">
-            <div
-              v-for="element in cities[item]"
-              :key="element.id"
-              class="city-item"
-            >
-              {{ element.name }}
-            </div>
+        <div class="city-list">
+          <div
+            v-for="element in cities[item]"
+            :key="element.id"
+            class="city-item"
+          >
+            {{ element.name }}
           </div>
         </div>
       </div>
@@ -44,19 +42,22 @@ export default {
     hotCities: [],
   },
   mounted() {
+    // let scroll = new BetterScroll(this.$refs.wrapper, {})
+    // console.log(this.scroll)
+    // this.scroll.on('scroll', (event) => console.log(event))
+  },
+  updated() {
     this.$nextTick(() => {
       if (!this.scroll) {
         this.scroll = BetterScroll(this.$refs.wrapperscroll, {
-          probeType: 2,
+          probeType: 3,
+          scrollY: true,
+          scrollX: false,
         })
       } else {
         this.scroll.refresh()
       }
-      console.log(this.scroll)
     })
-    // let scroll = new BetterScroll(this.$refs.wrapper, {})
-    // console.log(this.scroll)
-    // this.scroll.on('scroll', (event) => console.log(event))
   },
   computed: {
     ...mapState(['alphabet']),
@@ -65,7 +66,8 @@ export default {
     alphabet: function (newValue, oldValue) {
       console.log(newValue, oldValue)
       console.log(this.$refs[newValue][0])
-      this.scroll.scrollToElement(this.$refs[newValue])
+      console.log(this.scroll)
+      this.scroll.scrollToElement(this.$refs[newValue][0], 100, 0, 0, 'easing')
     },
   },
 }
@@ -75,9 +77,9 @@ export default {
 @import '~styles/varibles.styl';
 .wrapper {
   background: #fff
-  // position: absolute;
-  height: 100vh
   overflow: hidden
+  top: 1.52rem
+  height: calc(100vh - 1.52rem)
   .area {
     box-sizing: border-box
     height: 0.72rem
