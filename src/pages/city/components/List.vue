@@ -48,15 +48,18 @@ export default {
   },
   updated() {
     this.$nextTick(() => {
-      if (!this.scroll) {
-        this.scroll = BetterScroll(this.$refs.wrapperscroll, {
-          probeType: 3,
-          scrollY: true,
-          scrollX: false,
-        })
-      } else {
+      if (this.scroll) {
         this.scroll.refresh()
+        return
       }
+      this.scroll = BetterScroll(this.$refs.wrapperscroll, {
+        probeType: 3,
+        scrollY: true,
+        scrollX: false,
+        mouseWheel: true,
+        disableMouse: false,
+        disableTouch: false,
+      })
     })
   },
   computed: {
